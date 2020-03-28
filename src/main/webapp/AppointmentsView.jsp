@@ -27,11 +27,11 @@
                 out.println("<h3>Usted no tiene citas pendientes.</h3>");
             } else {
                 out.println("<p>" + session.getAttribute("appointment") + "</p>");
+                out.println("<form action=FrontController method=post><button class=btn"
+                        + " type=submit name=cmd value=CancelCommand>Cancelar</button>"
+                        + "<button class = btn2 type=submit name=cmd value=ModifyCommand>Modificar</button></form>");
             }
         %>
-        <form action=FrontController method=post>
-            <button class = "btn" type="submit" name="cmd" value="CancelCommand">Cancelar</button>
-            <button class = "btn2" type="submit" name="cmd" value="ModifyCommand">Modificar</button>
-        </form>
+
     </body>
 </html>
