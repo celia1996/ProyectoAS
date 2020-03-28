@@ -1,5 +1,6 @@
 body {
-    background-color: #ff6666  ;
+    background-image: url("images/calendario.jpg");
+    background-color: #ff6666;
     font-family: sans-serif;
 }
 /* Bordered form */

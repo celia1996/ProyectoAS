@@ -1,8 +1,12 @@
+body{
+    background-color:mistyrose;
+}
 /* Style the navigation bar */
 .navbar {
     width: 100%;
-    background-color: #ff6666;
+    background-color: salmon;
     overflow: auto;
+    border-radius: 25px;
 }
 
 /* Navbar links */
