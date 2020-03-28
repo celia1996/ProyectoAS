@@ -18,14 +18,14 @@
         
         <div class="navbar">
             <a class="active" href="index.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a href="CommandPageJSP.jsp"><i class="fa fa-clock-o"></i> Cita</a>
+            <a href="SelectAppointment.jsp"><i class="fa fa-clock-o"></i> Cita</a>
             <a href="Login.jsp"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
         </div>
         
         <h1>¿En qué podemos ayudarte?</h1>
         
         <div class="buttons">
-            <a href=CommandPageJSP.jsp ><button class="btn"><i class="fa fa-clock-o"></i> Pedir cita</button></a>
+            <a href=SelectAppointment.jsp ><button class="btn"><i class="fa fa-clock-o"></i> Pedir cita</button></a>
             <a href=AppointmentsView.jsp ><button type="submit" name="cmd" value="ViewMyAppointmentsCommand" class="btn"><i class="fa fa-calendar"></i> Mis citas</button></a>
         </div>
     </body>

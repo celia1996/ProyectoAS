@@ -16,7 +16,7 @@ public class ModifyCommand extends FrontCommand {
 
             session.setAttribute("appointment", null);
 
-            forward("/CommandPageJSP.jsp");
+            forward("/SelectAppointment.jsp");
 
         } catch (ServletException ex) {
             Logger.getLogger(AskForAppointmentCommand.class.getName()).log(Level.SEVERE, null, ex);

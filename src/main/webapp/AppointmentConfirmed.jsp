@@ -18,7 +18,7 @@
 
         <div class="navbar">
             <a href="index.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="active" href="CommandPageJSP.jsp"><i class="fa fa-clock-o"></i> Cita</a>
+            <a class="active" href="SelectAppointment.jsp"><i class="fa fa-clock-o"></i> Cita</a>
             <a href="Login.jsp"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
         </div>
         <h1>La cita ha sido creada correctamente</h1>
