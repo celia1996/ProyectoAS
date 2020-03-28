@@ -1,0 +1,43 @@
+p{
+    font-family: sans-serif;
+}
+
+h1{
+    font-family: sans-serif;
+}
+h3{
+    font-family: sans-serif;
+    color: red;
+}
+.btn{
+    padding: 10px 15px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: red;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn2{
+    padding: 10px 15px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color:#42A7E0;
+    border: none;
+    border-radius: 15px;  
+}
+
+
+.btn:hover{
+    background-color:darkred;
+}
+
+.btn2:hover{
+    background-color:RoyalBlue;
+}

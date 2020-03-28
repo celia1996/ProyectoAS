@@ -1,0 +1,23 @@
+h1{
+    font-family: sans-serif;
+}
+
+p{
+    font-family: sans-serif;
+}
+
+button{
+    padding: 10px 15px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #009900;
+    border: none;
+    border-radius: 15px;
+}
+
+button:hover{
+    background-color:darkgreen;
+}
