@@ -25,11 +25,14 @@
         </div>
         <h1>Por favor, escoja una de las siguientes citas disponibles</h1>
         <%
-            for ( String appointment : Appointments.appointments) {
-                out.println("<p>" + appointment + "</p>" + "<form action=FrontController method=post> <input name='appointment' value="
-                        + appointment +
-                        " hidden=true><button type=submit name=cmd value=AskForAppointmentCommand>Select</button></form>");
-            }
+            for (String appointment : Appointments.appointments) {
+                out.println("<p>" + appointment + "</p>");
+        %>
+        <form action=FrontController method=post> <input name='appointment' value="<%=appointment%>"hidden=true>
+            <button type=submit name=cmd value=AskForAppointmentCommand>Select</button>
+        </form>
+        <%
+        }
         %>
 
     </body>
