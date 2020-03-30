@@ -25,8 +25,8 @@
             <button type=submit name=cmd value=AskForAppointmentCommand>Select</button>
         </form>
         <%
-        }
+            }
         %>
-
+        <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>

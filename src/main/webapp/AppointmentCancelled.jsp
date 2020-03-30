@@ -16,5 +16,6 @@
     <body>
 
         <h1>Tu cita ha sido cancelada</h1>
+        <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>

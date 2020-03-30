@@ -15,10 +15,11 @@
     </head>
     <body>        
         <h1>¿En qué podemos ayudarte?</h1>
-        
+
         <div class="buttons">
             <a href=SelectAppointment.jsp ><button class="btn"><i class="fa fa-clock-o"></i> Pedir cita</button></a>
             <a href=AppointmentsView.jsp ><button type="submit" name="cmd" value="ViewMyAppointmentsCommand" class="btn"><i class="fa fa-calendar"></i> Mis citas</button></a>
         </div>
+        <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>

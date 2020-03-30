@@ -8,3 +8,14 @@ h1{
     text-align: center;
     color: #339900;
 }
+footer{
+    font-family: sans-serif;
+    text-align: center;
+    height: 20px;
+    background:mistyrose;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

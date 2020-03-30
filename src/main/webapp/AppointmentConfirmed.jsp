@@ -16,8 +16,9 @@
     <body> 
         <h1>La cita ha sido creada correctamente</h1>
         <%
-                out.println("<p>" + session.getAttribute("user") + " tu cita ha sido confirmada para el día: </p>" );
-                out.println("<p>" + session.getAttribute("appointment") + "</p>");
-            %>
+            out.println("<p>" + session.getAttribute("user") + " tu cita ha sido confirmada para el día: </p>");
+            out.println("<p>" + session.getAttribute("appointment") + "</p>");
+        %>
+        <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>

@@ -25,6 +25,6 @@
                         + "<button class = btn2 type=submit name=cmd value=ModifyCommand>Modificar</button></form>");
             }
         %>
-
+        <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>

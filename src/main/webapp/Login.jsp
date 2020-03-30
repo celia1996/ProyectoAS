@@ -36,4 +36,5 @@
             </form>       
         </div>
     </body>
+    <jsp:include page="./footer.jsp" flush="true" />
 </html>
