@@ -1,0 +1,107 @@
+body {
+    background-image: url("../images/calendar.jpg");
+    background-color: #ff6666;
+    font-family: sans-serif;
+}
+/* Bordered form */
+form {
+    border: none;
+    background:#ff6666; 
+    margin: auto;
+    width: 40%;
+    border-radius: 6px;
+    
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 40% 12px 35%;
+    width: 30%; height: 30%;
+}
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+
+}
+/* Full-width inputs */
+input[type=text], input[type=password], input[type=name] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid lightgrey ;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 20px;
+    background-color: lightgrey;
+}
+
+::-ms-input-placeholder{
+    color: darkslategray;
+}
+
+button {
+    background-color: #42A7E0;
+    color: white;
+    font-weight: bolder ;
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 30%;
+    border: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 30%;
+
+}
+
+button:hover{
+    background-color: royalblue ;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+
+}
+
+.icono-input{
+    display: flex;
+    width: 100%;
+}
+.icon {
+    padding: 10px;
+    color: darkslategray;
+    min-width: 50px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register{
+    background-color:palevioletred;
+    color: white;
+    font-weight: bolder ;
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 30%;
+    border: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 30%;
+}
+
+footer{
+    font-family: sans-serif;
+    text-align: center;
+    height: 20px;
+    background:lightblue;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+

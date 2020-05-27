@@ -1,0 +1,53 @@
+p{
+    font-family: sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-family: sans-serif;
+    text-align: center;
+}
+h3{
+    font-family: sans-serif;
+    color: red;
+    text-align: center;
+}
+.btn{
+    padding: 10px 15px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color:#ff0000;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn2{
+    padding: 10px 15px;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color:palevioletred;
+    border: none;
+    border-radius: 15px;  
+}
+
+form{
+    text-align: center;
+}
+
+footer{
+    font-family: sans-serif;
+    text-align: center;
+    height: 20px;
+    background:lightblue;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

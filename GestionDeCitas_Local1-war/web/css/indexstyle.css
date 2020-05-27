@@ -1,0 +1,41 @@
+h1{
+    font-family: sans-serif;
+    text-align: center;
+}
+.btn {
+    background-color:palevioletred;
+    border: none;
+    color: black;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 24px;
+}
+
+form{
+    text-align: center;
+}
+
+.buttons {
+    margin: 24px 40% 12px 35%; 
+    text-align: center;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: pink;
+}
+
+footer{
+    font-family: sans-serif;
+    text-align: center;
+    height: 20px;
+    background:lightblue;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

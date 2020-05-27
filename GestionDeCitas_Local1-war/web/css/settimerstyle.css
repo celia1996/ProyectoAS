@@ -1,0 +1,57 @@
+body {
+    background-image: url("../images/calendar.jpg");
+    background-color: #ff6666;
+    font-family: sans-serif;
+}
+
+h1{
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.btn {
+    background-color:palevioletred;
+    border: none;
+    color: black;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 24px;
+}
+.btn:hover {
+    background-color: pink;
+}
+
+form{
+    text-align: center;
+}
+input[type=text]{
+    width: 20%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid pink ;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin:auto;
+    background-color: pink;
+    text-align: center;
+}
+
+::-ms-input-placeholder{
+    color: darkslategray;
+}
+
+
+footer{
+    font-family: sans-serif;
+    text-align: center;
+    height: 20px;
+    background:lightblue;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
