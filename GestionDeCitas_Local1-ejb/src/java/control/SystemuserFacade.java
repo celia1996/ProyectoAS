@@ -6,6 +6,7 @@
 package control;
 
 import entities.Systemuser;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,12 @@ public class SystemuserFacade extends AbstractFacade<Systemuser> {
     public SystemuserFacade() {
         super(Systemuser.class);
     }
-    
+
+    public List<Systemuser> findUserbyName(String userName) {
+        return em.createQuery("SELECT s FROM Systemuser s WHERE s.username LIKE :userName")
+                .setParameter("userName", userName).getResultList();
+
+    }
+
+
 }

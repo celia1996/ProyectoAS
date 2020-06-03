@@ -10,8 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -49,18 +47,6 @@ public class Appointment implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "TIME")
     private String time;
-    @JoinColumn(name = "CATEGORYID_FK", referencedColumnName = "CATEGORYID")
-    @ManyToOne
-    private Category categoryidFk;
-    @JoinColumn(name = "EMPLOYEEID_FK", referencedColumnName = "EMPLOYEEID")
-    @ManyToOne
-    private Employee employeeidFk;
-    @JoinColumn(name = "LOCATIONID_FK", referencedColumnName = "LOCATIONID")
-    @ManyToOne
-    private Location locationidFk;
-    @JoinColumn(name = "SYSTEMUSERID_FK", referencedColumnName = "USERID")
-    @ManyToOne
-    private Systemuser systemuseridFk;
 
     public Appointment() {
     }
@@ -97,38 +83,6 @@ public class Appointment implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public Category getCategoryidFk() {
-        return categoryidFk;
-    }
-
-    public void setCategoryidFk(Category categoryidFk) {
-        this.categoryidFk = categoryidFk;
-    }
-
-    public Employee getEmployeeidFk() {
-        return employeeidFk;
-    }
-
-    public void setEmployeeidFk(Employee employeeidFk) {
-        this.employeeidFk = employeeidFk;
-    }
-
-    public Location getLocationidFk() {
-        return locationidFk;
-    }
-
-    public void setLocationidFk(Location locationidFk) {
-        this.locationidFk = locationidFk;
-    }
-
-    public Systemuser getSystemuseridFk() {
-        return systemuseridFk;
-    }
-
-    public void setSystemuseridFk(Systemuser systemuseridFk) {
-        this.systemuseridFk = systemuseridFk;
     }
 
     @Override

@@ -6,19 +6,16 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -50,8 +47,6 @@ public class Systemuser implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "PASSWORD")
     private String password;
-    @OneToMany(mappedBy = "systemuseridFk")
-    private Collection<Appointment> appointmentCollection;
 
     public Systemuser() {
     }
@@ -88,15 +83,6 @@ public class Systemuser implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @XmlTransient
-    public Collection<Appointment> getAppointmentCollection() {
-        return appointmentCollection;
-    }
-
-    public void setAppointmentCollection(Collection<Appointment> appointmentCollection) {
-        this.appointmentCollection = appointmentCollection;
     }
 
     @Override

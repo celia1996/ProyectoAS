@@ -6,19 +6,16 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -48,8 +45,6 @@ public class Location implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ROOM")
     private String room;
-    @OneToMany(mappedBy = "locationidFk")
-    private Collection<Appointment> appointmentCollection;
 
     public Location() {
     }
@@ -85,15 +80,6 @@ public class Location implements Serializable {
 
     public void setRoom(String room) {
         this.room = room;
-    }
-
-    @XmlTransient
-    public Collection<Appointment> getAppointmentCollection() {
-        return appointmentCollection;
-    }
-
-    public void setAppointmentCollection(Collection<Appointment> appointmentCollection) {
-        this.appointmentCollection = appointmentCollection;
     }
 
     @Override

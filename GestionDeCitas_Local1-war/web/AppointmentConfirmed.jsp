@@ -4,10 +4,11 @@
     Author     : celia
 --%>
 
-<%@page import="ejbs.UserEJB"%>
+<%@page import="entities.Systemuser"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="control.SystemuserFacade"%>
 <%@page import="database.Appointment"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="ejbs.CalendarEJB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,10 +21,13 @@
     <body> 
         <h1>La cita ha sido creada correctamente</h1>
         <%
-            UserEJB user = (UserEJB) session.getAttribute("userEJB");
-            out.println("<p>" + user.getUserName() + " tu cita ha sido confirmada para el día: </p>");
             
-            Appointment appointmentConfirmed = (Appointment) request.getAttribute("appointmentConfirmed");
+            SystemuserFacade user = (SystemuserFacade) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/SystemuserFacade!control.SystemuserFacade");
+            int userID = (Integer) session.getAttribute("userID");
+            
+            out.println("<p>" + user.find(userID).getUsername() + " tu cita ha sido confirmada para el día: </p>");
+            
+            Appointment appointmentConfirmed = (Appointment) session.getAttribute("appointmentConfirmed");
             out.println("<p>"+ appointmentConfirmed.getDate() + "</p>");
                
         %>

@@ -7,6 +7,7 @@ import ejbs.CalendarEJB;
 import ejbs.Counter;
 import ejbs.Log;
 import ejbs.UserEJB;
+import entities.Systemuser;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,10 +41,11 @@ public class AskForAppointmentCommand extends FrontCommand {
             appointment.setAvailable(1);
           
            //Singleton
-           Counter counter = (Counter) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Counter");
-            UserEJB user = (UserEJB) session.getAttribute("userEJB");
-            counter.newAppointment(user.getUserName());
-            
+          /* Counter counter = (Counter) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Counter");
+           Systemuser user = (Systemuser) request.getAttribute("user"); 
+           
+            counter.newAppointment(user.getUsername());
+            */
             Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
             log.addLog("AskForAppointmentCommand::process()- Se ha llamado al comando AskForAppointmentCommand");
             
