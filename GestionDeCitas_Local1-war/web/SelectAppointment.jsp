@@ -4,7 +4,11 @@
     Author     : celia
 --%>
 
-<%@page import="database.Appointment"%>
+<%@page import="control.CategoryFacade"%>
+<%@page import="control.AppointmentFacade"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="java.util.List"%>
+<%@page import="entities.Appointment"%>
 <%@page import="java.util.ArrayList"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,14 +23,23 @@
     <body>
         <h1>Por favor, escoja una de las siguientes citas disponibles</h1>
         <%
-
-            ArrayList<Appointment> appointments = (ArrayList<Appointment>) session.getAttribute("appointment");
-
+          
+            CategoryFacade category = (CategoryFacade) InitialContext.
+                    doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CategoryFacade!control.CategoryFacade");
+            
+            List<Appointment> appointments = (List<Appointment>) session.getAttribute("appointments");
+            int appointmentID;
+            int categoryID;
+            
             for (Appointment appointment : appointments) {
-                if (appointment.getAvailable() == 0) {
-                    out.println("<p>" + appointment.getDate()+ " a las " + appointment.getTime() + "</p>");
+                if (appointment.getAvailability() == 0) {
+                    categoryID = appointment.getCategoryid(); 
+                    out.println("<p>" + appointment.getDate()+ " a las " + 
+                            appointment.getTime() + " asunto: " + category.find(categoryID).getDescription() + "</p>");
+                    
+                    appointmentID = appointment.getAppointmentid();
                     %>
-                    <form action=FrontController method=post> <input name='appointmentItem' value="<%=appointment.getId()%>" hidden=true>
+                    <form action=FrontController method=post> <input name='appointmentID' value="<%=appointmentID%>" hidden=true>
                         <button type=submit name=cmd value=AskForAppointmentCommand>Select</button>
                     </form>
                     <%

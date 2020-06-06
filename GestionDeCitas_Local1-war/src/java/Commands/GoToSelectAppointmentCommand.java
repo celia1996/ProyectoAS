@@ -6,11 +6,15 @@
 package Commands;
 
 import Controllers.FrontCommand;
+import control.AppointmentFacade;
+import control.SystemuserFacade;
 import database.Appointment;
 import ejbs.AppointmentEJB;
 import ejbs.Log;
+import entities.Systemuser;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -29,12 +33,10 @@ public class GoToSelectAppointmentCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
 
-            AppointmentEJB appointment = (AppointmentEJB) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentEJB");
-
-            ArrayList<Appointment> appointments = appointment.getFromDB();
-
-            session.setAttribute("appointment", appointments);
-
+            AppointmentFacade appointments = (AppointmentFacade) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
+            List<entities.Appointment> appointmentList = appointments.findAll();
+            session.setAttribute("appointments", appointmentList);
+        
             //Singleton
             Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
             log.addLog("GoToSelectAppointmentCommand::process() - Se ha llamado al comando GoToSelectAppointmentCommand");

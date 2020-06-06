@@ -1,12 +1,12 @@
 package Commands;
 
 import Controllers.FrontCommand;
-import database.Appointment;
-import ejbs.AppointmentEJB;
+import control.AppointmentFacade;
 import ejbs.CalendarEJB;
 import ejbs.Counter;
 import ejbs.Log;
 import ejbs.UserEJB;
+import entities.Appointment;
 import entities.Systemuser;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -23,22 +23,28 @@ public class AskForAppointmentCommand extends FrontCommand {
     public void process() {
 
         try {
-            int appointmentItem = (int) Integer.parseInt(request.getParameter("appointmentItem"));
-            AppointmentEJB appointmentejb = (AppointmentEJB) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentEJB");
-            Appointment appointment = appointmentejb.getAppointment(appointmentItem);
-
             HttpSession session = request.getSession();
-            CalendarEJB myCalendar = (CalendarEJB) session.getAttribute("myCalendar");
+            int appointmentItem = (int) Integer.parseInt(request.getParameter("appointmentID"));
+            int userID = (Integer) session.getAttribute("userID");
+            
+            AppointmentFacade appointments = (AppointmentFacade) InitialContext.
+                    doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
+            Appointment appointment = appointments.find(appointmentItem);
+
+            
+            /*CalendarEJB myCalendar = (CalendarEJB) session.getAttribute("myCalendar");
 
             if (myCalendar == null) {
 
                 myCalendar = (CalendarEJB) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarEJB");
 
-            }
+            }*/
             request.setAttribute("appointmentConfirmed", appointment);
-            myCalendar.addAppointment(appointment);
-            session.setAttribute("myCalendar", myCalendar);
-            appointment.setAvailable(1);
+            
+            /*myCalendar.addAppointment(appointment);
+            session.setAttribute("myCalendar", myCalendar);*/
+            appointment.setAvailability(1);
+            appointment.setUserid(userID);
           
            //Singleton
           /* Counter counter = (Counter) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Counter");
