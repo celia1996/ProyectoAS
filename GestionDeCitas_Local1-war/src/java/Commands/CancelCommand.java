@@ -24,16 +24,17 @@ public class CancelCommand extends FrontCommand {
                 myCalendar = (CalendarEJB) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarEJB");
 
             }
-            int id = Integer.parseInt(request.getParameter("appointmentItem"));
+            int id = Integer.parseInt(request.getParameter("appointmentID"));
+            //eliminar del calendario, ponerla como disponible
             myCalendar.remove(id);
             session.setAttribute("myCalendar", myCalendar);
 
-            if (session.getAttribute("modify") != null) {
-
-                int modify = (int) session.getAttribute("modify");
+            if (session.getAttribute("modifyFlag") != null) {
+                //eliminar del calendario, ponerla como disponible
+                int modify = (int) session.getAttribute("modifyFlag");
 
                 if (modify == 1) {
-                    session.setAttribute("modify", 0);
+                    session.setAttribute("modifyFlag", 0);
                     forward("/SelectAppointment.jsp");
                 }
             } else {

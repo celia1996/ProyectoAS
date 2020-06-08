@@ -17,7 +17,7 @@ public class ModifyCommand extends FrontCommand {
         try {
             HttpSession session = request.getSession(true);
 
-            session.setAttribute("modify", 1);
+            session.setAttribute("modifyFlag", 1);
             
             //Singleton
             Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
