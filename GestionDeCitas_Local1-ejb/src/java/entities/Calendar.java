@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Calendar.findAll", query = "SELECT c FROM Calendar c")
+    ,@NamedQuery(name = "Calendar.findLikeUser", query = "SELECT c FROM Calendar c WHERE c.userid LIKE :user")
     , @NamedQuery(name = "Calendar.findByCalendarid", query = "SELECT c FROM Calendar c WHERE c.calendarid = :calendarid")
     , @NamedQuery(name = "Calendar.findByUserid", query = "SELECT c FROM Calendar c WHERE c.userid = :userid")
     , @NamedQuery(name = "Calendar.findByAppointmentid", query = "SELECT c FROM Calendar c WHERE c.appointmentid = :appointmentid")})
@@ -43,6 +44,13 @@ public class Calendar implements Serializable {
 
     public Calendar() {
     }
+
+    public Calendar(Integer calendarid, Integer userid, Integer appointmentid) {
+        this.calendarid = calendarid;
+        this.userid = userid;
+        this.appointmentid = appointmentid;
+    }
+
 
     public Calendar(Integer calendarid) {
         this.calendarid = calendarid;

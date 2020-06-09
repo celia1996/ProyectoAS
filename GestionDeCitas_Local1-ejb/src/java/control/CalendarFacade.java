@@ -6,6 +6,7 @@
 package control;
 
 import entities.Calendar;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,17 @@ public class CalendarFacade extends AbstractFacade<Calendar> {
     public CalendarFacade() {
         super(Calendar.class);
     }
-    
+
+    public List findCalendarByUser(Integer user) {
+        return em.createQuery("SELECT c FROM Calendar c WHERE c.userid = :user")
+                .setParameter("user", user).getResultList();
+
+    }
+
+    public List findCalendarByAppointmentID(Integer appointmentID) {
+        return em.createQuery("SELECT c FROM Calendar c WHERE c.appointmentid = :appointmentID")
+                .setParameter("appointmentID", appointmentID).getResultList();
+
+    }
+
 }

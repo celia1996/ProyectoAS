@@ -23,9 +23,12 @@
                 <button type="sumbmit" class="btn"><i class="fa fa-clock-o"></i> Pedir cita</button>
             </form>
 
-         
-                 <a href=AppointmentsView.jsp ><button type="submit" name="cmd" value="ViewMyAppointmentsCommand" class="btn"><i class="fa fa-calendar"></i> Mis citas</button></a>
-                 <a href=SetTimer.jsp ><button type="submit" class="btn"><i class="fa fa-cogs"></i> Programar timer</button></a>
+            <form class="form-inline" action="FrontController">
+                <input type="hidden" name="cmd" value="ViewMyAppointmentsCommand">
+                <button type="submit" class="btn"><i class="fa fa-calendar"></i> Mis citas</button>
+            </form>
+            
+            <a href=SetTimer.jsp ><button type="submit" class="btn"><i class="fa fa-cogs"></i> Programar timer</button></a>
         </div>
         <jsp:include page="./footer.jsp" flush="true" />
     </body>

@@ -7,13 +7,8 @@ package Commands;
 
 import Controllers.FrontCommand;
 import control.AppointmentFacade;
-import control.SystemuserFacade;
-import database.Appointment;
-import ejbs.AppointmentEJB;
 import ejbs.Log;
-import entities.Systemuser;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

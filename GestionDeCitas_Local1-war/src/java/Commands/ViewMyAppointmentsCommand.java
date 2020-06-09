@@ -1,8 +1,11 @@
 package Commands;
 
 import Controllers.FrontCommand;
+import control.CalendarFacade;
 import ejbs.Log;
+import entities.Calendar;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -16,12 +19,22 @@ public class ViewMyAppointmentsCommand extends FrontCommand {
     public void process() {
         try {
             HttpSession session = request.getSession(true);
-            if (session.getAttribute("user") != null && session.getAttribute("appointment") != null) {
+            
+            if (session.getAttribute("userID") != null ) {
+                   
+                    CalendarFacade calendarEM = (CalendarFacade) InitialContext
+                            .doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarFacade!control.CalendarFacade");
+                    int userID = (Integer) session.getAttribute("userID");
+                    
+                    List<Calendar> userCalendar = calendarEM.findCalendarByUser(userID);
+                    
+                    session.setAttribute("userCalendar", userCalendar);
+                
                 
                 //Singleton
                 Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
                 log.addLog("ViewMyAppointments::process() - Se ha llamado al comando ViewMyAppointmentsCommand");
-                
+
                 forward("/AppointmentsView.jsp");
             }
 
@@ -34,3 +47,5 @@ public class ViewMyAppointmentsCommand extends FrontCommand {
         }
     }
 }
+
+//eliminado del primer if && session.getAttribute("appointment") != null
