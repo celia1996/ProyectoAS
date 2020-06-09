@@ -1,9 +1,13 @@
 package Commands;
 
 import Controllers.FrontCommand;
-import ejbs.CalendarEJB;
+import control.AppointmentFacade;
+import control.CalendarFacade;
 import ejbs.Log;
+import entities.Appointment;
+import entities.Calendar;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.InitialContext;
@@ -17,22 +21,28 @@ public class CancelCommand extends FrontCommand {
     public void process() {
         try {
             HttpSession session = request.getSession(true);
-            CalendarEJB myCalendar = (CalendarEJB) session.getAttribute("myCalendar");
+            int appointmentID = Integer.parseInt(request.getParameter("appointmentID"));
+            CalendarFacade calendarEM = (CalendarFacade) InitialContext
+                    .doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarFacade!control.CalendarFacade");
 
-            if (myCalendar == null) {
+            List<Calendar> appointments = calendarEM.findCalendarByAppointmentID(appointmentID);
+            int calendarAppointmentID = 0;
 
-                myCalendar = (CalendarEJB) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarEJB");
-
+            for (Calendar calendar : appointments) {
+                calendarAppointmentID = calendar.getAppointmentid();
+                calendarEM.remove(calendar);
             }
-            int id = Integer.parseInt(request.getParameter("appointmentID"));
-            //eliminar del calendario, ponerla como disponible
-            myCalendar.remove(id);
-            session.setAttribute("myCalendar", myCalendar);
+
+            AppointmentFacade appointmentEM = (AppointmentFacade) InitialContext.
+                    doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
+
+            Appointment appointmentToAvailable = appointmentEM.find(calendarAppointmentID);
+            appointmentToAvailable.setAvailability(0);
+            appointmentToAvailable.setUserid(null);
+            appointmentEM.edit(appointmentToAvailable);
 
             if (session.getAttribute("modifyFlag") != null) {
-                //eliminar del calendario, ponerla como disponible
                 int modify = (int) session.getAttribute("modifyFlag");
-
                 if (modify == 1) {
                     session.setAttribute("modifyFlag", 0);
                     forward("/SelectAppointment.jsp");
@@ -44,11 +54,7 @@ public class CancelCommand extends FrontCommand {
                 forward("/AppointmentCancelled.jsp");
             }
 
-        } catch (ServletException ex) {
-            Logger.getLogger(CancelCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(CancelCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
+        } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(CancelCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
