@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="control.CategoryFacade"%>
+<%@page import="control.LocationinformationFacade"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="control.AppointmentFacade"%>
 <%@page import="entities.Calendar"%>
@@ -27,14 +29,25 @@
 
             AppointmentFacade appointments = (AppointmentFacade) InitialContext.
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
-
-            if ( calendars.isEmpty()) {
+            LocationinformationFacade locationinfoEM = (LocationinformationFacade) InitialContext.
+                    doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/LocationinformationFacade!control.LocationinformationFacade");
+            CategoryFacade category = (CategoryFacade) InitialContext.
+                    doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CategoryFacade!control.CategoryFacade");
+            
+            if (calendars.isEmpty()) {
                 out.println("<h3>Usted no tiene citas pendientes.</h3>");
             } else {
-
+                int employeeID;
+                int categoryID;
                 for (Calendar appointment : calendars) {
                     appointmentID = appointment.getAppointmentid();
-                    out.println("<p>" + appointments.find(appointmentID).getDate() + " a las " + appointments.find(appointmentID).getTime() + "</p>");
+                    employeeID = appointments.find(appointmentID).getEmployeeid();
+                    categoryID= appointments.find(appointmentID).getCategoryid();
+                    
+                    out.println("<p> Asunto de la cita: <b> " + category.find(categoryID).getDescription()+ "</b></p>");
+                    out.println("<p> El día: <b>" + appointments.find(appointmentID).getDate() + " </b> a las <b>" + appointments.find(appointmentID).getTime() + "</b></p>");
+                    out.println("<p> Le atenderá: <b>" + locationinfoEM.find(employeeID).getEmployeename().getEmployeeName() + "</b></p>");
+                    out.println("<p> Identificador de cita: <b>" + appointments.find(appointmentID).getAppointmentid() + "</b></p>");
                     out.println("<form action=FrontController method=post>"
                             + "<button class=btn type=submit name=cmd value=CancelCommand>Cancelar</button>"
                             + "<input name='appointmentID' value='" + appointmentID + "' hidden=true>"

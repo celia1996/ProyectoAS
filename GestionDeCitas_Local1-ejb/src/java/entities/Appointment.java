@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,13 +30,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Appointment.findAll", query = "SELECT a FROM Appointment a")
     , @NamedQuery(name = "Appointment.findByAppointmentid", query = "SELECT a FROM Appointment a WHERE a.appointmentid = :appointmentid")
-    , @NamedQuery(name = "Appointment.findByDate", query = "SELECT a FROM Appointment a WHERE a.date = :date")
-    , @NamedQuery(name = "Appointment.findByTime", query = "SELECT a FROM Appointment a WHERE a.time = :time")
     , @NamedQuery(name = "Appointment.findByAvailability", query = "SELECT a FROM Appointment a WHERE a.availability = :availability")
     , @NamedQuery(name = "Appointment.findByUserid", query = "SELECT a FROM Appointment a WHERE a.userid = :userid")
     , @NamedQuery(name = "Appointment.findByLocationid", query = "SELECT a FROM Appointment a WHERE a.locationid = :locationid")
     , @NamedQuery(name = "Appointment.findByEmployeeid", query = "SELECT a FROM Appointment a WHERE a.employeeid = :employeeid")
-    , @NamedQuery(name = "Appointment.findByCategoryid", query = "SELECT a FROM Appointment a WHERE a.categoryid = :categoryid")})
+    , @NamedQuery(name = "Appointment.findByCategoryid", query = "SELECT a FROM Appointment a WHERE a.categoryid = :categoryid")
+    , @NamedQuery(name = "Appointment.findByDate", query = "SELECT a FROM Appointment a WHERE a.date = :date")
+    , @NamedQuery(name = "Appointment.findByTime", query = "SELECT a FROM Appointment a WHERE a.time = :time")})
 public class Appointment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,16 +45,6 @@ public class Appointment implements Serializable {
     @NotNull
     @Column(name = "APPOINTMENTID")
     private Integer appointmentid;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "DATE")
-    private String date;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "TIME")
-    private String time;
     @Basic(optional = false)
     @NotNull
     @Column(name = "AVAILABILITY")
@@ -64,6 +57,12 @@ public class Appointment implements Serializable {
     private Integer employeeid;
     @Column(name = "CATEGORYID")
     private Integer categoryid;
+    @Column(name = "DATE")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    @Size(max = 8)
+    @Column(name = "TIME")
+    private String time;
 
     public Appointment() {
     }
@@ -72,10 +71,8 @@ public class Appointment implements Serializable {
         this.appointmentid = appointmentid;
     }
 
-    public Appointment(Integer appointmentid, String date, String time, int availability) {
+    public Appointment(Integer appointmentid, int availability) {
         this.appointmentid = appointmentid;
-        this.date = date;
-        this.time = time;
         this.availability = availability;
     }
 
@@ -85,22 +82,6 @@ public class Appointment implements Serializable {
 
     public void setAppointmentid(Integer appointmentid) {
         this.appointmentid = appointmentid;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public int getAvailability() {
@@ -141,6 +122,22 @@ public class Appointment implements Serializable {
 
     public void setCategoryid(Integer categoryid) {
         this.categoryid = categoryid;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     @Override

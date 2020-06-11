@@ -45,7 +45,7 @@ public class CancelCommand extends FrontCommand {
                 int modify = (int) session.getAttribute("modifyFlag");
                 if (modify == 1) {
                     session.setAttribute("modifyFlag", 0);
-                    forward("/SelectAppointment.jsp");
+                    forward("/SelectAppointment?page=1.jsp");
                 }
             } else {
                 //Singleton

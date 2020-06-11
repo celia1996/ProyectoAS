@@ -29,14 +29,14 @@ public class GoToSelectAppointmentCommand extends FrontCommand {
             HttpSession session = request.getSession(true);
 
             AppointmentFacade appointments = (AppointmentFacade) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
-            List<entities.Appointment> appointmentList = appointments.findAll();
+            List<entities.Appointment> appointmentList = appointments.orderAppointmentByDate();
             session.setAttribute("appointments", appointmentList);
         
             //Singleton
             Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
             log.addLog("GoToSelectAppointmentCommand::process() - Se ha llamado al comando GoToSelectAppointmentCommand");
 
-            forward("/SelectAppointment.jsp");
+            forward("/SelectAppointment.jsp?page=1");
 
         } catch (NamingException ex) {
             Logger.getLogger(GoToSelectAppointmentCommand.class.getName()).log(Level.SEVERE, null, ex);

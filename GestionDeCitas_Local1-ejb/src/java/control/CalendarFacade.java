@@ -30,13 +30,13 @@ public class CalendarFacade extends AbstractFacade<Calendar> {
         super(Calendar.class);
     }
 
-    public List findCalendarByUser(Integer user) {
+    public List<Calendar> findCalendarByUser(Integer user) {
         return em.createQuery("SELECT c FROM Calendar c WHERE c.userid = :user")
                 .setParameter("user", user).getResultList();
 
     }
 
-    public List findCalendarByAppointmentID(Integer appointmentID) {
+    public List<Calendar> findCalendarByAppointmentID(Integer appointmentID) {
         return em.createQuery("SELECT c FROM Calendar c WHERE c.appointmentid = :appointmentID")
                 .setParameter("appointmentID", appointmentID).getResultList();
 

@@ -1,11 +1,38 @@
-h1{
+h2{
     text-align: center;
     font-family: sans-serif;
 }
 
-p{
+table {
     font-family: sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+}
+
+#myInput {
+    width: 30%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid white;
+    border-radius:20px ;
+}
+
+.search{
+    padding: 8px 10px;
+    font-size: 12px;
     text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: palevioletred;
+    border: none;
+    border-radius: 15px;  
+}
+
+td{
+    padding: 10px;
+    text-align: left;
 }
 
 form{
@@ -13,8 +40,8 @@ form{
 }
 
 button{
-    padding: 10px 15px;
-    font-size: 17px;
+    padding: 8px 15px;
+    font-size: 12px;
     text-align: center;
     cursor: pointer;
     outline: none;
@@ -38,4 +65,8 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+.search:hover{
+    background-color: pink;
 }

@@ -4,6 +4,7 @@
     Author     : celia
 --%>
 
+<%@page import="entities.Category"%>
 <%@page import="control.CategoryFacade"%>
 <%@page import="control.AppointmentFacade"%>
 <%@page import="javax.naming.InitialContext"%>
@@ -28,37 +29,35 @@
         </form>
 
         <%
+            String description = request.getParameter("searchCategory");
 
-            CategoryFacade category = (CategoryFacade) InitialContext.
+            CategoryFacade categoryEM = (CategoryFacade) InitialContext.
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CategoryFacade!control.CategoryFacade");
             AppointmentFacade appointmentEM = (AppointmentFacade) InitialContext.
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
+
+            List<Category> categories = categoryEM.search(description);
             
-            int pag = Integer.parseInt(request.getParameter("page"));
-            if(request.getParameter("page") == null) pag = 1;
-            
-            List<Appointment> appointments = appointmentEM.setPagination(pag);
-            int categoryID;
+            List<Appointment> appointments;
 
-            for (Appointment appointment : appointments) {
-                if (appointment.getAvailability() == 0) {
-                    categoryID = appointment.getCategoryid();
-                    out.println("<div class ='row'><table>");
-                    out.println("<tr>");
-                    out.println("<td>" + appointment.getDate() + " </td><td> "
-                            + appointment.getTime() + "</td><td>" + category.find(categoryID).getDescription() + "</td>");
+            for (Category category : categories) {
+                appointments = appointmentEM.getAppointmetByCategoryOrderedByDate(category.getCategoryid());
+                for (Appointment appointment : appointments) {
+                    if (appointment.getAvailability() == 0) {
+                        out.println("<div class ='row'><table>");
+                        out.println("<tr>");
+                        out.println("<td>" + appointment.getDate() + " </td><td> "
+                                + appointment.getTime() + "</td><td>" + categoryEM.find(category.getCategoryid()).getDescription() + "</td>");
 
-                    out.println("<td><form action=FrontController method=post>");
-                    out.println("<input name='appointmentID' value=" + appointment.getAppointmentid() + " hidden=true>");
-                    out.println("<button type=submit name=cmd value=AskForAppointmentCommand>Select</button></form>"
-                            + "</td></tr></table></div>");
+                        out.println("<td><form action=FrontController method=post>");
+                        out.println("<input name='appointmentID' value=" + appointment.getAppointmentid() + " hidden=true>");
+                        out.println("<button type=submit name=cmd value=AskForAppointmentCommand>Select</button></form>"
+                                + "</td></tr></table></div>");
 
+                    }
                 }
             }
         %>
-        <section style="text-align: center;">
-            <a href="SelectAppointment.jsp?page=1">1</a> | <a href="SelectAppointment.jsp?page=2">2</a>
-        </section>
         <jsp:include page="./footer.jsp" flush="true" />
     </body>
 </html>
