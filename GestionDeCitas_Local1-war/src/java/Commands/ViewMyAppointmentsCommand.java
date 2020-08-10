@@ -2,7 +2,6 @@ package Commands;
 
 import Controllers.FrontCommand;
 import control.CalendarFacade;
-import ejbs.Log;
 import entities.Calendar;
 import java.io.IOException;
 import java.util.List;
@@ -29,11 +28,6 @@ public class ViewMyAppointmentsCommand extends FrontCommand {
                     List<Calendar> userCalendar = calendarEM.findCalendarByUser(userID);
                     
                     session.setAttribute("userCalendar", userCalendar);
-                
-                
-                //Singleton
-                Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-                log.addLog("ViewMyAppointments::process() - Se ha llamado al comando ViewMyAppointmentsCommand");
 
                 forward("/AppointmentsView.jsp");
             }

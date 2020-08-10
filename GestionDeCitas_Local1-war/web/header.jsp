@@ -8,18 +8,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/navbarstyle.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <div class="navbar">
-            <a class="active" href="index.jsp"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a  href="SelectAppointment.jsp"><i class="fa fa-clock-o"></i> Cita</a>
-            <a href="CounterView.jsp"><i class="fa fa-bar-chart "></i> Estadísticas</a>
-            <a href="Logs.jsp"><i class="fa fa-comment "></i> Logs</a>
-            <a href="Login.jsp"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
-        </div>
+        <nav class="navbar navbar-light" style="background-color: #42A7E0;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.jsp" style="color: white">Home</a></li>
+                        <!--<li><a href="SelectAppointment.jsp">Pedir cita</a></li>-->
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Login.jsp"style="color: white"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </body>
 </html>

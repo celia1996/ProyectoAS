@@ -7,7 +7,6 @@ package Commands;
 
 import Controllers.FrontCommand;
 import control.AppointmentFacade;
-import ejbs.Log;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,10 +30,7 @@ public class GoToSelectAppointmentCommand extends FrontCommand {
             AppointmentFacade appointments = (AppointmentFacade) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
             List<entities.Appointment> appointmentList = appointments.orderAppointmentByDate();
             session.setAttribute("appointments", appointmentList);
-        
-            //Singleton
-            Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-            log.addLog("GoToSelectAppointmentCommand::process() - Se ha llamado al comando GoToSelectAppointmentCommand");
+       
 
             forward("/SelectAppointment.jsp?page=1");
 

@@ -1,72 +1,30 @@
-h2{
-    text-align: center;
-    font-family: sans-serif;
-}
-
-table {
-    font-family: sans-serif;
-    border-collapse: collapse;
+.container{
     width: 50%;
-    margin: auto;
+    height: 50%;
 }
 
 #myInput {
     width: 30%;
     font-size: 16px;
+    background-color: activecaption;
     padding: 12px 20px 12px 40px;
     border: 1px solid white;
     border-radius:20px ;
 }
 
-.search{
-    padding: 8px 10px;
-    font-size: 12px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: palevioletred;
-    border: none;
-    border-radius: 15px;  
-}
-
-td{
-    padding: 10px;
-    text-align: left;
-}
-
 form{
     text-align: center;
 }
-
-button{
-    padding: 8px 15px;
-    font-size: 12px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #009900;
-    border: none;
-    border-radius: 15px;
+.search:hover{
+    background-color: pink;
 }
-
-button:hover{
-    background-color:darkgreen;
-}
-
-footer{
-    font-family: sans-serif;
-    text-align: center;
-    height: 20px;
-    background:lightblue;
-
+footer {
+    background-color:#bcd9ea;
+    color: white;
+    padding: 15px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
 }
 
-.search:hover{
-    background-color: pink;
-}

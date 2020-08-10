@@ -2,7 +2,6 @@ package Commands;
 
 import Controllers.FrontCommand;
 import control.SystemuserFacade;
-import ejbs.Log;
 import entities.Systemuser;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,10 +28,6 @@ public class RegisterCommand extends FrontCommand {
                 newUser.setUsername(user);
                 newUser.setPassword(password);
                 users.create(newUser);
-                
-                //Singleton
-                Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-                log.addLog("RegisterCommand::process() - Se ha llamado al comando RegisterCommand");
                 
                 forward("/Login.jsp");
                 

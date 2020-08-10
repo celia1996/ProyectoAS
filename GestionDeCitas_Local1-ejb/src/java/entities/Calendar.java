@@ -25,10 +25,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Calendar.findAll", query = "SELECT c FROM Calendar c")
-    ,@NamedQuery(name = "Calendar.findLikeUser", query = "SELECT c FROM Calendar c WHERE c.userid LIKE :user")
     , @NamedQuery(name = "Calendar.findByCalendarid", query = "SELECT c FROM Calendar c WHERE c.calendarid = :calendarid")
     , @NamedQuery(name = "Calendar.findByUserid", query = "SELECT c FROM Calendar c WHERE c.userid = :userid")
-    , @NamedQuery(name = "Calendar.findByAppointmentid", query = "SELECT c FROM Calendar c WHERE c.appointmentid = :appointmentid")})
+    , @NamedQuery(name = "Calendar.findByAppointmentid", query = "SELECT c FROM Calendar c WHERE c.appointmentid = :appointmentid")
+    , @NamedQuery(name = "Calendar.findByPhonenumber", query = "SELECT c FROM Calendar c WHERE c.phonenumber = :phonenumber")
+    , @NamedQuery(name = "Calendar.findByPersonalid", query = "SELECT c FROM Calendar c WHERE c.personalid = :personalid")
+    , @NamedQuery(name = "Calendar.findByAttendance", query = "SELECT c FROM Calendar c WHERE c.attendance = :attendance")})
 public class Calendar implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,6 +43,12 @@ public class Calendar implements Serializable {
     private Integer userid;
     @Column(name = "APPOINTMENTID")
     private Integer appointmentid;
+    @Column(name = "PHONENUMBER")
+    private Integer phonenumber;
+    @Column(name = "PERSONALID")
+    private Integer personalid;
+    @Column(name = "ATTENDANCE")
+    private Integer attendance;
 
     public Calendar() {
     }
@@ -50,7 +58,6 @@ public class Calendar implements Serializable {
         this.userid = userid;
         this.appointmentid = appointmentid;
     }
-
 
     public Calendar(Integer calendarid) {
         this.calendarid = calendarid;
@@ -78,6 +85,30 @@ public class Calendar implements Serializable {
 
     public void setAppointmentid(Integer appointmentid) {
         this.appointmentid = appointmentid;
+    }
+
+    public Integer getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(Integer phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public Integer getPersonalid() {
+        return personalid;
+    }
+
+    public void setPersonalid(Integer personalid) {
+        this.personalid = personalid;
+    }
+
+    public Integer getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Integer attendance) {
+        this.attendance = attendance;
     }
 
     @Override

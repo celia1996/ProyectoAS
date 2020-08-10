@@ -45,7 +45,7 @@
             out.println("<p>" + user.find(userID).getUsername() + " su cita ha sido confirmada para el día: <b>" 
                     + appointmentConfirmed.getDate() + " a las " + appointmentConfirmed.getTime()+ "</b></p>");
             
-            out.println("<p> Motivo de la visita: <b>" + category.find(categoryID).getDescription() + "</b></p>");
+            out.println("<p> Asunto de la cita: <b>" + category.find(categoryID).getDescription() + "</b></p>");
             out.println("<p> Por favor, al llegar diríjase a la sala: <b>" + location.find(locationID).getFloor() + location.find(locationID).getRoom()+  "</b></p>");
             out.println("<p> Le atenderá: <b>" + employee.find(employeeID).getName() + "</b></p>");
             out.println("<p> Tenga consigo el siguiente identificador de cita: <b>" + appointmentConfirmed.getAppointmentid()+ "</b></p>");

@@ -3,7 +3,6 @@ package Commands;
 import Controllers.FrontCommand;
 import control.AppointmentFacade;
 import control.CalendarFacade;
-import ejbs.Log;
 import entities.Appointment;
 import entities.Calendar;
 import java.io.IOException;
@@ -45,12 +44,10 @@ public class CancelCommand extends FrontCommand {
                 int modify = (int) session.getAttribute("modifyFlag");
                 if (modify == 1) {
                     session.setAttribute("modifyFlag", 0);
-                    forward("/SelectAppointment?page=1.jsp");
+                    System.out.println(modify);
+                    forward("/SelectAppointment.jsp?page=1");
                 }
             } else {
-                //Singleton
-                Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-                log.addLog("CancelCommand::process() - Se ha llamado al comando CancelCommand");
                 forward("/AppointmentCancelled.jsp");
             }
 

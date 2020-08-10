@@ -1,9 +1,7 @@
-footer{
-    font-family: sans-serif;
-    text-align: center;
-    height: 20px;
-    background:lightskyblue;
-
+footer {
+    background-color:#bcd9ea ;
+    color: white;
+    padding: 15px;
     position: fixed;
     left: 0;
     bottom: 0;

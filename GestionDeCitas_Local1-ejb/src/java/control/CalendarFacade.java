@@ -41,5 +41,4 @@ public class CalendarFacade extends AbstractFacade<Calendar> {
                 .setParameter("appointmentID", appointmentID).getResultList();
 
     }
-
 }

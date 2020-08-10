@@ -1,12 +1,7 @@
 package Controllers;
 
 import Commands.UnKownCommand;
-import ejbs.Log;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +26,6 @@ public class FrontController extends HttpServlet {
         if(command != null){
             command.init(getServletContext(), request, response);
             command.process();
-        }else{
-            try {
-                Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-                log.scheduleTimer();
-            } catch (NamingException ex) {
-                Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
 
     }

@@ -3,9 +3,6 @@ package Commands;
 import Controllers.FrontCommand;
 import control.AppointmentFacade;
 import control.CalendarFacade;
-import control.SystemuserFacade;
-import ejbs.Counter;
-import ejbs.Log;
 import entities.Appointment;
 import entities.Calendar;
 import java.io.IOException;
@@ -39,7 +36,7 @@ public class AskForAppointmentCommand extends FrontCommand {
                         .doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CalendarFacade!control.CalendarFacade");
                 session.setAttribute("calendar", calendarEM);
             }
-            System.out.println(userID);
+            
             Calendar calendar = new Calendar(calendarID, userID, appointmentID);
             calendarEM.create(calendar);
 
@@ -49,17 +46,9 @@ public class AskForAppointmentCommand extends FrontCommand {
             appointment.setUserid(userID);
             appointments.edit(appointment);
 
-            //Singleton
-            Counter counter = (Counter) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Counter");
-            SystemuserFacade user = (SystemuserFacade) InitialContext
-                    .doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/SystemuserFacade!control.SystemuserFacade");
 
-            counter.newAppointment(user.find(userID).getUsername());
 
-            Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-            log.addLog("AskForAppointmentCommand::process()- Se ha llamado al comando AskForAppointmentCommand");
-
-            forward("/AppointmentConfirmed.jsp");
+            forward("/UserDetails.jsp");
 
         } catch (ServletException | IOException | NamingException ex) {
             Logger.getLogger(AskForAppointmentCommand.class.getName()).log(Level.SEVERE, null, ex);

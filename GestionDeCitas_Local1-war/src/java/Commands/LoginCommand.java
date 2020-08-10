@@ -2,8 +2,6 @@ package Commands;
 
 import Controllers.FrontCommand;
 import control.SystemuserFacade;
-import ejbs.Counter;
-import ejbs.Log;
 import entities.Systemuser;
 import java.io.IOException;
 import java.util.List;
@@ -35,14 +33,6 @@ public class LoginCommand extends FrontCommand {
                     session.setAttribute("userID", userID);
                 }
             }
-                
-                //Singleton
-                Counter counter = (Counter) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Counter");
-                counter.newLogin();
-
-                Log log = (Log) InitialContext.doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/Log");
-                log.addLog("LoginCommand::process() - Se ha llamado al comando LoginCommand");
-
                 forward("/index.jsp");
 
             } catch (ServletException ex) {

@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="css/fotter.css">
     </head>
     <body>
-        <footer>| Todos los derechos reservados | © 2020 www.GestionDeCitas.com |</footer>
+
+        <footer class="page-footer font-small blue pt-4">
+            <div class="footer-copyright text-center py-3"> © 2020 www.GestionDeCitas.com
+            </div></footer>
     </body>
 </html>

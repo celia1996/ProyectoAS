@@ -62,8 +62,8 @@ public class AppointmentFacade extends AbstractFacade<Appointment> {
         cq.orderBy(qb.asc(appointments.get("date")));
 
         List<Appointment> appointmentsList = em.createQuery(cq)
-                .setFirstResult((page - 1) * 3)
-                .setMaxResults(3)
+                .setFirstResult((page - 1) * 2)
+                .setMaxResults(2)
                 .getResultList();
         return appointmentsList;
     }

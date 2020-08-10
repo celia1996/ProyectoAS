@@ -16,7 +16,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>My appointments</title>
         <link rel="stylesheet" href="css/appointmentsviewstyle.css">
         <jsp:include page="./header.jsp" flush="true" />
@@ -33,7 +37,7 @@
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/LocationinformationFacade!control.LocationinformationFacade");
             CategoryFacade category = (CategoryFacade) InitialContext.
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/CategoryFacade!control.CategoryFacade");
-            
+
             if (calendars.isEmpty()) {
                 out.println("<h3>Usted no tiene citas pendientes.</h3>");
             } else {
@@ -42,16 +46,17 @@
                 for (Calendar appointment : calendars) {
                     appointmentID = appointment.getAppointmentid();
                     employeeID = appointments.find(appointmentID).getEmployeeid();
-                    categoryID= appointments.find(appointmentID).getCategoryid();
-                    
-                    out.println("<p> Asunto de la cita: <b> " + category.find(categoryID).getDescription()+ "</b></p>");
+                    categoryID = appointments.find(appointmentID).getCategoryid();
+
+                    out.println("<p> Asunto de la cita: <b> " + category.find(categoryID).getDescription() + "</b></p>");
                     out.println("<p> El día: <b>" + appointments.find(appointmentID).getDate() + " </b> a las <b>" + appointments.find(appointmentID).getTime() + "</b></p>");
                     out.println("<p> Le atenderá: <b>" + locationinfoEM.find(employeeID).getEmployeename().getEmployeeName() + "</b></p>");
                     out.println("<p> Identificador de cita: <b>" + appointments.find(appointmentID).getAppointmentid() + "</b></p>");
                     out.println("<form action=FrontController method=post>"
-                            + "<button class=btn type=submit name=cmd value=CancelCommand>Cancelar</button>"
+                            + "<button class='btn btn-danger' type=submit name=cmd value=CancelCommand>Cancelar</button>"
                             + "<input name='appointmentID' value='" + appointmentID + "' hidden=true>"
-                            + "<button class = btn2 type=submit name=cmd value=ModifyCommand>Modificar</button></form>");
+                            + "<button class='btn btn-warning' type=submit name=cmd value=ModifyCommand>Modificar</button></form>");
+                    
                 }
             }
 
