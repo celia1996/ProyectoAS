@@ -14,7 +14,7 @@
     <body>
 
         <footer class="page-footer font-small blue pt-4">
-            <div class="footer-copyright text-center py-3"> © 2020 www.GestionDeCitas.com
+            <div class="footer-copyright text-center py-3"> © 2020 www.NoWalls.com
             </div></footer>
     </body>
 </html>
