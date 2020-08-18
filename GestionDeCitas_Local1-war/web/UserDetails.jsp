@@ -23,7 +23,7 @@
             <form action="FrontController">
                 <div class="form-group">
                     <label for="dni">DNI:</label>
-                    <input type="dni" class="form-control" id="dni" placeholder="47890345D" name="dni">
+                    <input type="dni" class="form-control" id="dni" placeholder="47890345D" name="personalID">
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Número de teléfono:</label>
@@ -35,7 +35,7 @@
                     <p>Seleccione esta opción si desea recibir el aviso de su turno mediante una notificación móvil:</p>
                     <label><input type="checkbox" name="notification">Recibir notificación móvil</label>
                 </div>
-                <button class='btn btn-success'type="submit" class="btn btn-default">Submit</button>
+                <button class='btn btn-success'type="submit" name=cmd value=UserDetailsCommand class="btn btn-default">Submit</button>
             </form>
         </div>
 

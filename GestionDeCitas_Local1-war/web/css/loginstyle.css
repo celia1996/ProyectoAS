@@ -3,14 +3,14 @@ body {
     background-color: #ff6666;
     font-family: sans-serif;
 }
-/* Bordered form */
+
 form {
+    text-align: center;
     border: none;
-    background:#ff6666; 
+    background: #66ccff; 
     margin: auto;
     width: 40%;
     border-radius: 6px;
-    
 }
 
 /* Center the avatar image inside this container */
@@ -19,21 +19,20 @@ form {
     margin: 24px 40% 12px 35%;
     width: 30%; height: 30%;
 }
-/* Avatar image */
+
 img.avatar {
     width: 40%;
     border-radius: 50%;
-
 }
-/* Full-width inputs */
+
 input[type=text], input[type=password], input[type=name] {
     width: 80%;
     padding: 10px;
-    border: 1px solid lightgrey ;
+    border: 1px solid white ;
     box-sizing: border-box;
     border-radius: 4px;
     margin-top: 20px;
-    background-color: lightgrey;
+    background-color: white;
 }
 
 ::-ms-input-placeholder{
@@ -41,22 +40,11 @@ input[type=text], input[type=password], input[type=name] {
 }
 
 button {
-    background-color: #42A7E0;
-    color: white;
-    font-weight: bolder ;
-    text-transform: uppercase;
-    padding: 10px;
-    margin: 20px;
-    margin-left: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: 20px;
     border-radius: 6px;
-    cursor: pointer;
-    width: 30%;
-
-}
-
-button:hover{
-    background-color: royalblue ;
+    width: 20%;
 }
 
 .container {
@@ -76,15 +64,4 @@ button:hover{
     min-width: 50px;
     text-align: center;
     margin-top: 20px;
-}
-
-
-footer {
-    background-color:#bcd9ea;
-    color: white;
-    padding: 15px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
 }
