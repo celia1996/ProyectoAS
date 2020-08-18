@@ -24,6 +24,7 @@ public class AskForAppointmentCommand extends FrontCommand {
             int userID = (Integer) session.getAttribute("userID");
             
             int calendarID = (int) (Math.random() * 100 + 4);
+            session.setAttribute("calendarID", calendarID);
 
             AppointmentFacade appointments = (AppointmentFacade) InitialContext.
                     doLookup("java:global/GestionDeCitas_Local1/GestionDeCitas_Local1-ejb/AppointmentFacade!control.AppointmentFacade");
@@ -40,7 +41,7 @@ public class AskForAppointmentCommand extends FrontCommand {
             Calendar calendar = new Calendar(calendarID, userID, appointmentID);
             calendarEM.create(calendar);
 
-            request.setAttribute("appointmentConfirmed", appointment);
+            session.setAttribute("appointmentConfirmed", appointment);
 
             appointment.setAvailability(1);
             appointment.setUserid(userID);
